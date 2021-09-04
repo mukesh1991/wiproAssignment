@@ -1,0 +1,340 @@
+Linked List Data Structure: Creation and Traversal in C Language
+...........................................................................
+#include <stdio.h>
+#include <stdlib.h>
+struct node{
+    int data;
+    struct node* next;
+};
+void linklistTraversal(struct node *ptr){
+    while (ptr != NULL){
+        printf("Element: %d\n", ptr->data);
+        ptr=ptr->next;
+    }
+}
+
+int main()
+{
+    struct node *head;
+    struct node *second;
+    struct node *thrd;
+    struct node *fourth;
+    //memory allocation
+    head=(struct node *)malloc(sizeof(struct node));
+    second=(struct node *)malloc(sizeof(struct node));
+    thrd=(struct node *)malloc(sizeof(struct node));
+    fourth=(struct node *)malloc(sizeof(struct node));
+    //link  the node
+    head->data=4;
+    head->next=second;
+    second->data=14;
+    second->next=thrd;
+    thrd->data=33;
+    thrd->next=fourth;
+    fourth->data=91;
+    fourth->next=NULL;
+    
+    printf("Hello World");
+    linklistTraversal(head);
+    return 0;
+}
+#insert element in linklist
+................................................
+#include <stdio.h>
+#include <stdlib.h>
+struct node{
+    int data;
+    struct node* next;
+};
+void linklistTraversal(struct node *ptr){
+    while (ptr != NULL){
+        printf("Element: %d\n", ptr->data);
+        ptr=ptr->next;
+    }
+}
+//case--1-insert at begining
+struct node *insertatfirst(struct node *head,int data){
+    struct node *ptr=(struct node*)malloc(sizeof(struct node));
+    ptr->data= data;
+    ptr->next=head;
+    
+    return ptr;
+}
+//case-2 insert at index(midle)
+struct node *insertatIndex(struct node *head,int data,int index){
+     struct node *ptr=(struct node*)malloc(sizeof(struct node));
+     struct node *p=head;
+     int i=0;
+     while (i != index-1){
+         p=p->next;
+         i++;
+     }
+     ptr->data=data;
+     ptr->next=p->next;
+     p->next=ptr;
+     return head;
+}
+//case-3 insert at end-
+struct node *insertatEnd(struct node *head,int data){
+    struct node *ptr=(struct node*)malloc(sizeof(struct node));
+    ptr->data= data;
+    struct node*p=head;
+    while(p->next != NULL){
+        p=p->next;
+    }
+    p->next=ptr;
+    ptr->next=NULL;
+    return head;
+}
+//case-4 insert after given node-
+struct node *insertafternode(struct node *head,struct node *prinode,int data){
+    struct node *ptr=(struct node*)malloc(sizeof(struct node));
+    ptr->data= data;
+    ptr->next=prinode->next;
+    prinode->next=ptr;
+    return head;
+}
+
+int main()
+{
+    struct node *head;
+    struct node *second;
+    struct node *thrd;
+    struct node *fourth;
+    //memory allocation
+    head=(struct node *)malloc(sizeof(struct node));
+    second=(struct node *)malloc(sizeof(struct node));
+    thrd=(struct node *)malloc(sizeof(struct node));
+    fourth=(struct node *)malloc(sizeof(struct node));
+    //link  the node
+    head->data=4;
+    head->next=second;
+    second->data=14;
+    second->next=thrd; 
+    thrd->data=33;
+    thrd->next=fourth;
+    (fourth)->data=91;
+    fourth->next=NULL;
+    printf("traverse linklist before insertion\n");
+    linklistTraversal(head);
+    printf("\nLinked list after insertion\n");
+    //head=insertatfirst(head,56);
+    //head=insertatIndex(head,56,2);
+    //head=insertatEnd(head,56);
+    head=insertafternode(head,head,63);
+    linklistTraversal(head);
+    
+    return 0;
+}
+-############################---link list node deletion programm----------------##############################----------------------
+#include <stdio.h>
+#include <stdlib.h>
+struct node{
+    int data;
+    struct node*next;
+};
+void linklisttraverse(struct node * ptr){
+    while (ptr != NULL){
+        printf("Elements: %d \n",ptr->data);
+        ptr = ptr->next;
+    }
+}
+//case-1 delete on begning(first element
+struct node * deletefirstnode(struct node * head){
+    struct node *ptr=head;
+    head=head->next;
+    free(ptr);
+    return head;
+}
+//case-2 delete base on the index value-
+struct node * deleteatindex(struct node * head, int index){
+    struct node *ptr=head;
+    struct node *q=head->next;
+    int i=0;
+    //for (int i=0;i<index-1;i++){
+    while (i != index-1){
+        ptr=ptr->next;
+        q=q->next;
+        i++;
+     
+    }
+    ptr->next=q->next;
+    free(q);
+    return head;
+}
+//case-3 delete last element-
+struct node * deleteEndnode(struct node * head){
+    struct node *ptr=head;
+    struct node *q=head->next;
+    while(q->next !=NULL){
+        ptr=ptr->next;
+        q=q->next;
+    }
+    ptr->next=NULL;
+    free(q);
+    return head;
+}
+//case-4 delete element base on given value-
+struct node * deletegivenvalue(struct node * head,int value){
+    struct node *ptr=head;
+    struct node *q=head->next;
+    while(q->data != value && q->next !=NULL){
+        ptr=ptr->next;
+        q=q->next;
+        
+    }
+    if (q->data == value){
+        ptr->next=q->next;
+        free(q);
+    }
+    return head;
+}        
+
+int main()
+{
+    struct node *head;
+    struct node *scnd;
+    struct node *thrd;
+    struct node *forth;
+    //dynamic memory allocation-
+    head=(struct node *)malloc(sizeof(struct node));
+    scnd=(struct node *)malloc(sizeof(struct node));
+    thrd=(struct node *)malloc(sizeof(struct node));
+    forth=(struct node *)malloc(sizeof(struct node));
+    //linking the node-
+    head->data=5;
+    head->next=scnd;
+    scnd->data=15;
+    scnd->next=thrd;
+    thrd->data=51;
+    thrd->next=forth;
+    forth->data=65;
+    forth->next=NULL;
+    
+    printf("link list before deletion \n");
+    linklisttraverse(head);
+    printf("\nlink list after deletion \n");
+    //head=deletefirstnode(head);
+    //head=deleteatindex(head,2);
+    //head=deleteEndnode(head);
+    head=deletegivenvalue(head,55);
+    linklisttraverse(head);
+    return 0;
+}
+-----------------------------------------------------------------
+
+#include<stdio.h>
+#include<stdlib.h>
+struct node {
+	int data;
+	struct node *link;
+};
+void print(struct node*);
+struct node add_at_end(struct node *head,int data);
+int main()
+{
+	struct node *head;
+	head=(struct node *)malloc(sizeof(struct node));
+	head->data=76;
+	head->link=NULL;
+	
+	struct node *current;
+	current=(struct node *)malloc(sizeof(struct node));
+	current->data=79;
+	current->link=NULL;
+	head->link=current;
+    print(head);
+    printf("\n");
+    add_at_end(head,89);
+    printf(" after the addition of node the list are:\n");
+    print(head);
+
+}
+struct node add_at_end(struct node *head,int data)
+{
+	struct node *ptr,*temp;
+	ptr=head;
+	temp=(struct node *)malloc(sizeof(struct node));
+	temp->data=data;
+	temp->link=NULL;
+	while(ptr->link!=NULL)
+	{
+		ptr=ptr->link;
+	}
+	ptr->link=temp;
+}
+void print(struct node *head)
+{
+	struct node *ptr;
+	int count=0;
+	ptr=head;
+	if(ptr==NULL)
+	{
+		printf(" list is empty");
+	}
+	else
+	{
+		while(ptr!=NULL)
+		{
+			printf("%d\n",ptr->data);
+			ptr=ptr->link;
+			count++;
+		}
+		printf(" count is %d",count);
+	}
+}
+
+........multiple input at run time...........................................
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+	int data;
+	struct node *link;
+};
+void insert(struct node *head){
+	struct node *ptr;
+	int num,i,dta;
+	printf("enter the number of nodes u want to add:");
+	scanf("%d",&num);
+	for(i=1;i<=num;i++)
+	{
+	
+		printf(" enter the data:");
+		scanf("%d",&dta);
+		ptr=malloc(sizeof(struct node));
+		ptr->data=dta;
+		ptr->link=NULL;
+		head->link=ptr;
+		head=head->link;
+	}
+}
+void print(struct node *head){
+	int count=0;
+	if(head==NULL)
+	{
+		printf(" The list is empty");
+	}
+	else
+	{
+		while(head!=NULL)
+		{
+			count++;
+			printf("%d\n",head->data);
+			head=head->link;
+		}
+	}
+	
+}
+main()
+{
+	struct node *head;
+	head=malloc(sizeof(struct node));
+	head->data=89;
+	head->link=NULL;
+	printf(" The list before insertion\n");
+	print(head);
+	insert(head);
+	printf(" THe list after insertion\n");
+	print(head);
+	getch();
+}

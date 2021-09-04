@@ -1,0 +1,410 @@
+Deployment 
+==========
+It is the process of moving the project from location machine to deployment server.
+
+deployment is the process of delivering completed software to the client who ordered it or rolling out the software to consumers. deployment should only take place after thorough testing to ensure that all the flaws and bugs have been identified and fixed.
+
+In a more generic sense, it basically means to get your software ready for actual use. 
+
+Git
+----
+Git is a distributed version-control system for tracking changes in source code during software development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files
+
+Git is a content management and tracking system developed by Linus Torvalds, creator of Linux.
+
+Git was released in 2005
+
+GitHub
+-------
+GitHub is a US-based global company that provides hosting for software development version control using Git.
+
+GitHub is a Git repository hosting service, but it adds many of its own features. 
+
+While Git is a command line tool, GitHub provides a Web-based graphical interface. 
+
+Eg:
+---
+step1:  Install GIT
+step2:  Create Repository(folder to store project like my_rep)
+step3:  Copy and paste the required project in repository.
+step4:  Open Git Bash 
+step5:  Change the path to repository (my_rep)
+----------------------------------------------
+Narayana@DESKTOP-B12C60U MINGW64 ~
+$ cd E:
+
+Narayana@DESKTOP-B12C60U MINGW64 /e
+$ cd my_rep
+
+Narayana@DESKTOP-B12C60U MINGW64 /e/my_rep
+$ ls
+gridsystempro/
+
+step6: initialize the git 
+--------------------------
+Narayana@DESKTOP-B12C60U MINGW64 /e/my_rep
+$ git init
+Initialized empty Git repository in E:/my_rep/.git/
+
+Narayana@DESKTOP-B12C60U MINGW64 /e/my_rep (master)
+$ ls
+gridsystempro/
+
+Narayana@DESKTOP-B12C60U MINGW64 /e/my_rep (master)
+$ ls -la
+total 40
+drwxr-xr-x 1 Narayana 197121 0 Mar 17 07:54 ./
+drwxr-xr-x 1 Narayana 197121 0 Mar 17 07:49 ../
+drwxr-xr-x 1 Narayana 197121 0 Mar 17 07:54 .git/
+drwxr-xr-x 1 Narayana 197121 0 Mar 17 07:50 gridsystempro/
+
+step7: check the git status
+----------------------------
+Narayana@DESKTOP-B12C60U MINGW64 /e/my_rep (master)
+$ git status
+On branch master
+
+No commits yet
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        gridsystempro/
+nothing added to commit but untracked files present (use "git add" to track)
+
+step8:	if we want add all files and updates
+--------------------------------------------
+Narayana@DESKTOP-B12C60U MINGW64 /e/my_rep (master)
+$ git add .
+
+
+step9:	finally we make commit all changes
+------------------------------------------
+Narayana@DESKTOP-B12C60U MINGW64 /e/my_rep (master)
+$ git commit -m 'firstcommit'
+
+
+*** Please tell me who you are.
+Run
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+fatal: unable to auto-detect email address (got 'Narayana@DESKTOP-B12C60U.(none)')
+
+
+Note: It is throughing error, so we have to add our name amd email, like below 
+------------------------------------------------------------------------------
+
+Narayana@DESKTOP-B12C60U MINGW64 /e/my_rep (master)
+$ git config --global user.name pythonsai
+
+Narayana@DESKTOP-B12C60U MINGW64 /e/my_rep (master)
+$ git config --global user.email pythonnarayana@gmail.com
+
+
+
+step10:	if we want to check our details
+---------------------------------------
+Narayana@DESKTOP-B12C60U MINGW64 /e/my_rep (master)
+$ git config --global -l
+user.name=pythonsai
+user.email=pythonnarayana@gmail.com
+
+step11: Now we can commit the changes
+-------------------------------------
+Narayana@DESKTOP-B12C60U MINGW64 /e/my_rep (master)
+$ git commit -m 'firstcommit'
+
+step12: we can check the status 
+--------------------------------
+Narayana@DESKTOP-B12C60U MINGW64 /e/my_rep (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+
+
+step13: Create account in www.github.com 
+
+step14: Verify Email ID
+
+step15: Create Repository with any name  "grid system project"
+---------------------------------------------------------------
+
+…or create a new repository on the command line
+echo "# grid-system-project" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/narayanasqlserver/grid-system-project.git
+git push -u origin master
+
+Note: already first three git lines over in Git Bash, Now run fourth git line in git bash
+
+
+Narayana@DESKTOP-B12C60U MINGW64 /e/my_rep (master)
+git remote add origin https://github.com/narayanasqlserver/grid-system-project.git
+
+Note: Now run fifth git line  in git bash 
+
+Narayana@DESKTOP-B12C60U MINGW64 /e/my_rep (master)
+git push -u origin master
+
+
+sometimes it will throw  following error
+----------------------------------------
+remote: Permission to nrynrama/curdprojects.git denied to narayanasqlserver.
+fatal: unable to access 'https://github.com/nrynrama/curdprojects.git/': The requested URL returned error: 403
+
+The solution is:
+type "Credential Manager" in windows search box
+----> select "Windows Credentials"
+----> Remove Credentials under "Generic Credentials" 
+
+Now Run the above (push) command again,
+
+
+Now it opens Github logins page when i run the above command 
+
+After Giving username and password, it will display like below 
+
+Narayana@DESKTOP-B12C60U MINGW64 /e/my_rep (master)
+$ git push -u origin master
+Enumerating objects: 27, done.
+Counting objects: 100% (27/27), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (23/23), done.
+Writing objects: 100% (27/27), 8.65 KiB | 805.00 KiB/s, done.
+Total 27 (delta 0), reused 0 (delta 0)
+To https://github.com/narayanasqlserver/grid-system-project.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+Now Internally it will load our project into github 
+That means we moved our project from local repository to remote repository
+
+Now goto github.com and click  <>code option, then we can see all our files and folders of project in github.com
+
+
+Now we deploy on www.pythonanywhere.com
+
+step14:	Create account in www.pythonanywhere.com
+-------------------------------------------------
+username:		narayanasqlserver
+password:		rolnum
+
+pythonanywhere has a dashboard contains, 
+1. Console, 
+2. Files, 
+3. Web, 
+4. Tasks, 
+5. Databases
+
+step15:	click on console and bash console (It is live)
+
+In real time, if we want deploy any kind of application then it is highly recomanded to create virtual environment. 
+ because pythonanywhere can be used by multiple people, so that we can our own python and django versions 
+ 
+ Now run the following command to create virtualenv and required python version and project name
+ 
+ ========================================
+ mkvirtualenv --python=python3.6 myproject
+ =========================================
+ 03:58 ~ $ mkvirtualenv --python=python3.6 myproject
+Running virtualenv with interpreter /usr/bin/python3.6
+Using base prefix '/usr'
+New python executable in /home/narayanasqlserver/.virtualenvs/myproject/bin/python3.6
+Also creating executable in /home/narayanasqlserver/.virtualenvs/myproject/bin/python
+Installing setuptools, pip, wheel...done.
+virtualenvwrapper.user_scripts creating /home/narayanasqlserver/.virtualenvs/myproject/bin/predeactivate
+virtualenvwrapper.user_scripts creating /home/narayanasqlserver/.virtualenvs/myproject/bin/postdeactivate
+virtualenvwrapper.user_scripts creating /home/narayanasqlserver/.virtualenvs/myproject/bin/preactivate
+virtualenvwrapper.user_scripts creating /home/narayanasqlserver/.virtualenvs/myproject/bin/postactivate
+virtualenvwrapper.user_scripts creating /home/narayanasqlserver/.virtualenvs/myproject/bin/get_env_details
+(myproject) 03:59 ~ $
+ 
+ 
+ So it will create virtual environment with (myproject) name 
+ 
+ If we want to see list of packages which are installes then 
+ 
+ ========
+ pip list
+ ========
+ 
+(myproject) 03:59 ~ $ pip list
+Package    Version
+---------- -------
+pip        19.0.3 
+setuptools 40.8.0 
+wheel      0.33.1 
+(myproject) 04:02 ~ $ 
+ 
+ 
+ 
+ Now we have to install django,
+ Note: whatever version is available in our local machine then same version should be installed here also.
+ 
+ =================================================
+ (myproject) 04:02 ~ $ pip install -U django==1.9
+ ==================================================
+ (myproject) 04:02 ~ $ pip install -U django==3.1
+Looking in links: /usr/share/pip-wheels
+Collecting django==1.8
+  Downloading https://files.pythonhosted.org/packages/4e/1c/17a429cfb79c1814d1ec31939fc5cf4a8ac68fe934279e095fb6160123a9/Django-1.8-py2.py3-none-any
+.whl (6.2MB)
+    100% |████████████████████████████████| 6.2MB 1.1MB/s 
+Installing collected packages: django
+Successfully installed django-1.8
+(myproject) 04:08 ~ $
+
+
+again we can crosscheck existing packages 
+
+==============================
+(myproject) 04:08 ~ $ pip list
+==============================
+Package    Version
+---------- -------
+Django     1.8    
+pip        19.0.3 
+setuptools 40.8.0 
+wheel      0.33.1 
+(myproject) 04:09 ~ $ 
+
+
+
+Now copy our application from github to this virtual environment
+
+Now goto github.com----> code---> click on clone or download button, copy the path 
+https://github.com/narayanasqlserver/grid-system-project.git
+
+Now we goto pythonanywhere base console and run the following command....
+
+============================================================================================
+(myproject) 04:09 ~ $ git clone https://github.com/narayanasqlserver/grid-system-project.git
+=============================================================================================
+Cloning into 'grid-system-project'...
+remote: Enumerating objects: 27, done.
+remote: Counting objects: 100% (27/27), done.
+remote: Compressing objects: 100% (23/23), done.
+remote: Total 27 (delta 0), reused 27 (delta 0), pack-reused 0
+Unpacking objects: 100% (27/27), done.
+Checking connectivity... done.
+(myproject) 04:15 ~ $
+
+
+Now the project moved to pythonanywhere, if we want to crosscheck,
+
+(myproject) 04:15 ~ $ ls
+README.txt  grid-system-project
+
+Now remote repository came to pythonanywhere from github
+
+in remote repository, we should have the project, if we want to crosscheck then 
+
+(myproject) 04:16 ~ $ cd grid-system-project
+(myproject) 04:19 ~/grid-system-project (master)$ ls
+gridsystempro
+(myproject) 04:19 ~/grid-system-project (master)$ 
+
+Now gridsystempro project is available in remote repository 
+
+Now change the path to gridsystempro folder and run all commands normally, like makemigrations, migrate, runserver
+
+
+
+(myproject) 04:19 ~/grid-system-project (master)$ cd gridsystempro
+
+(myproject) 04:25 ~/grid-system-project/gridsystempro (master)$ python manage.py makemigrations
+No changes detected
+
+(myproject) 04:25 ~/grid-system-project/gridsystempro (master)$ python manage.py migrate
+No changes detected 
+
+(myproject) 04:26 ~/grid-system-project/gridsystempro (master)$ 
+
+present working directory 
+---------------------------
+(myproject) 04:26 ~/grid-system-project/gridsystempro (master)$ pwd
+
+
+/home/narayanasqlserver/grid-system-project/gridsystempro  (It is source code path)
+home/mukesh1991/date1project/Date1pro
+/home/saras/Blogsapp2/Blogs_pro
+
+Now click on the browse option lines in the right-top corner and click on Web option 
+
+Click on "add a new web app",click next , click next, select "Manual Configuration" option 
+
+select python 3.6 version and click next 
+
+Now "Configuration for narayanasqlserver.pythonanywhere.com" page will open,
+
+in this page, goto "Code" heading
+
+Source Code:
+Working Directory: 
+WSGI Configuration File: 
+Python Version: 
+
+Copy the source code from pwd and paste in Source Code option 
+in the same page, goto Virtual environment option and copy and paste the below path
+
+/home/narayanasqlserver/.virtualenvs/myproject
+
+in the same page, goto reload option and click reload narayanasqlserver.pythonanywhere.com 
+
+Now click on the link "Configuration for narayanasqlserver.pythonanywhere.com", it will open new browser and displays "Hello, World!" message...
+
+So finally our link is working well.
+
+======It will valid only 3 months===== 
+This "Hello, World" message is not our required result, 
+so one more step is there to configure our project.
+
+goto "WSGI Configuration File" in the "Code" heading and click on the link 
+Now new file willopen,
+Remove the code which belongs to "Hello World" Message, lines from 12 to 35
+
+just goto ++++django++++ option and 
+uncomment os and sys imports, lines in 50s
+uncomment path variable also and assign our source code path to ths path variable, like below
+
+path = "/home/narayanasqlserver/grid-system-project/gridsystempro"  
+uncomment "if" line, "sys" line and write extra code, like below
+ 
+import os
+import sys
+
+#
+## assuming your django settings file is at '/home/narayanasqlserver/mysite/mysite/settings.py'
+## and your manage.py is is at '/home/narayanasqlserver/mysite/manage.py'
+path = "/home/narayanasqlserver/grid-system-project/gridsystempro"
+if path not in sys.path:
+    sys.path.append(path)
+os.chdir(path)
+os.environ.setdefault('DJANGO_SETTINGS_MODULE','gridsystempro.settings')
+#os.environ['DJANGO_SETTINGS_MODULE'] = 'mysite.settings'
+## then:
+
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
+
+
+Now save this file
+
+Refresh webpage 
+Goback to previous file and click on reload option again,
+
+now goto browser "Hello, Message" window and refresh, it will return DisAllowedHost Error.
+goto Files (in the dashboard), gridsystempro, settings.py file 
+
+
+ALLOWD_HOSTS = ['narayanasqlserver.pythonanywhere.com']
+
+and save the file 
+
+Again Relaod the page 
+
+Goto browser "Hello World" Message and it will dispaly our required Result Webapge......
+
